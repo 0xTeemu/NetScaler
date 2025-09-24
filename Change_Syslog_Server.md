@@ -1,6 +1,7 @@
 # Workflow to Replace Syslog Configuration on NetScaler
 ## Instructions
 
+Pre-requirements: Old syslog policy is Advanced Global Policy Binding. This doesn't work with Classic Global Policy Bindings without modifying the commands.
 1) Go to shell
 shell
 
