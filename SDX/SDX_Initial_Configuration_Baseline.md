@@ -23,6 +23,8 @@ add systemuser name=YOURALTERNATIVESUPERUSER password=YOURSECUREPASSWORD issuper
 set cliprompt promptString=YOURSDXHOSTNAME
 ```
 
+## Explanations
+
 ```
 # Timezone
 set timezone timezone="UTC+0300 EEST Europe/Helsinki"
