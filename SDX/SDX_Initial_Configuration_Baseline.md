@@ -15,7 +15,11 @@ set systemsettings enable_shell_access=false
 set systemsettings enable_cuxip=false
 set backuppolicy backup_to_retain=5
 set systemuser id=USETABTOFILL password=YOURSECUREPASSWORD # NOTE: 'show systemuser' to get 'id' if other than 'nsroot' exists
+
 add systemuser name=YOURALTERNATIVESUPERUSER password=YOURSECUREPASSWORD issuperuser=true
+add ntpserver server=x.x.x.x minpoll=6 maxpoll=10 key_id=0 autokey=false
+add snmptrap dest_server=x.x.x.x dest_port=162 community=yourcommunitystring version=v2 / v3
+add snmpmanager snmp_manager=x.x.x.x netmask=x.x.x.x community=yourcommunitystring
 ```
 
 ## Other nice to have
@@ -58,4 +62,13 @@ set systemuser id=USETABTOFILL password=YOURSECUREPASSWORD # NOTE: 'show systemu
 
 # Add alternative superuser account as best practise and use it instead of 'nsroot'
 add systemuser name=YOURALTERNATIVESUPERUSER password=YOURSECUREPASSWORD issuperuser=true
+
+# Add your NTP server
+add ntpserver server=x.x.x.x minpoll=6 maxpoll=10 key_id=0 autokey=false
+
+# Add SNMP traps
+add snmptrap dest_server=x.x.x.x dest_port=162 community=yourcommunitystring version=v2 / v3
+
+# Add SNMP managers
+add snmpmanager snmp_manager=x.x.x.x netmask=x.x.x.x community=yourcommunitystring
 ```
