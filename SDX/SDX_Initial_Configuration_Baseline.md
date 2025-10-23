@@ -1,5 +1,11 @@
 # Intial configurations to new SDX
 
+## Description
+Reference: https://docs.netscaler.com/en-us/netscaler-adc-secure-deployment
+
+NOTES:
+- These settings assume that there is no external authentication enabled
+
 ##
 1) Set initial IP configurations to SDX
 2) Also enable Applicance Supportability IP / XenServer IP if needed
@@ -14,9 +20,11 @@ set systemsettings basicauth=false
 set systemsettings enable_shell_access=false
 set systemsettings enable_cuxip=false
 set backuppolicy backup_to_retain=5
+set passwordpolicy enable_password_complexity=true minimum_password_length=15
+set userlockoutpolicy enable_user_lockout=true invalid_logins=5 user_lockout_interval=30
 set systemuser id=USETABTOFILL password=YOURSECUREPASSWORD # NOTE: 'show systemuser' to get 'id' if other than 'nsroot' exists
 
-add systemuser name=YOURALTERNATIVESUPERUSER password=YOURSECUREPASSWORD issuperuser=true
+add systemuser name=YOURALTERNATIVESUPERUSER password=YOURSECUREPASSWORD issuperuser=true groups=[owner]
 add ntpserver server=x.x.x.x minpoll=6 maxpoll=10 key_id=0 autokey=false
 add snmptrap dest_server=x.x.x.x dest_port=162 community=yourcommunitystring version=v2 / v3
 add snmpmanager snmp_manager=x.x.x.x netmask=x.x.x.x community=yourcommunitystring
@@ -57,11 +65,17 @@ set systemsettings enable_cuxip=false
 # Retain more than default 3 backups
 set backuppolicy backup_to_retain=5
 
+# Set 'Enable Password Complexity' and 'Minimum Password Length' password policy. Reference (NIST) Special Publication 800-63B / single-factor authentication 
+set passwordpolicy enable_password_complexity=true minimum_password_length=15
+
+# Set user lockout policy
+set userlockoutpolicy enable_user_lockout=true invalid_logins=5 user_lockout_interval=30
+
 # Change 'nsroot' user default password
 set systemuser id=USETABTOFILL password=YOURSECUREPASSWORD # NOTE: 'show systemuser' to get 'id' if other than 'nsroot' exists
 
 # Add alternative superuser account as best practise and use it instead of 'nsroot'
-add systemuser name=YOURALTERNATIVESUPERUSER password=YOURSECUREPASSWORD issuperuser=true
+add systemuser name=YOURALTERNATIVESUPERUSER password=YOURSECUREPASSWORD issuperuser=true groups=[owner]
 
 # Add your NTP server
 add ntpserver server=x.x.x.x minpoll=6 maxpoll=10 key_id=0 autokey=false
