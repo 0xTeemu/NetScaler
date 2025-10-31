@@ -28,6 +28,7 @@ add systemuser name=YOURALTERNATIVESUPERUSER password=YOURSECUREPASSWORD issuper
 add ntpserver server=x.x.x.x minpoll=6 maxpoll=10 key_id=0 autokey=false
 add snmptrap dest_server=x.x.x.x dest_port=162 community=yourcommunitystring version=v2 / v3
 add snmpmanager snmp_manager=x.x.x.x netmask=x.x.x.x community=yourcommunitystring
+add nsadminprofile name=YOURNSPROFILENAME username=nsroot password=YOURSECUREPASSWORD use_global_setting_for_communication_with_ns=true svm_ns_comm=https
 ```
 
 ## Other nice to have
@@ -85,4 +86,7 @@ add snmptrap dest_server=x.x.x.x dest_port=162 community=yourcommunitystring ver
 
 # Add SNMP managers
 add snmpmanager snmp_manager=x.x.x.x netmask=x.x.x.x community=yourcommunitystring
+
+# Add nsadminprofile
+add nsadminprofile name=YOURNSPROFILENAME username=nsroot password=YOURSECUREPASSWORD use_global_setting_for_communication_with_ns=true svm_ns_comm=https
 ```
