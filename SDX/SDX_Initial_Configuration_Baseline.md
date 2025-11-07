@@ -16,6 +16,7 @@ set hostname hostname=HOSTNAMEHERE
 set systemsettings svm_ns_comm=https
 set systemsettings secure_access_only=true
 set systemsettings enable_session_timeout=true session_timeout=15 session_timeout_unit=Minutes
+set systemsettings enable_shell_access=false
 set systemsettings basicauth=false
 set systemsettings enable_shell_access=false
 set systemsettings enable_cuxip=false
@@ -54,6 +55,9 @@ set systemsettings svm_ns_comm=https
 
 # Enable Session Timeout, Session Timeout 15 min, Session Timeout Unit in Minutes
 set systemsettings enable_session_timeout=true session_timeout=15 session_timeout_unit=Minutes
+
+# Disable shell access from non-root users
+set systemsettings enable_shell_access=false
 
 # Do not Allow Basic Authentication
 set systemsettings basicauth=false
