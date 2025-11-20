@@ -20,6 +20,6 @@ set HA node -failSafe ON
 set aaa parameter -maxLoginAttempts 3 -failedLoginTimeout 15 -persistentLoginAttempts ENABLED
 set ssl parameter -sendCloseNotify y
 set vpn parameter -defaultAuthorizationAction DENY
-set aaa parameter -loginEncryption ENABLED (NetScalerin ominaisuus salata tunnistustiedot joita kenttiin kirjoitetaan, huom. tämä täytyy aina testata ennen käyttöönottoa)
-set ns param -cip ENABLED X-Forwarded-For (lisätään clientin oma IP osoite “X-Forwarded-For” keksiin)
+set aaa parameter -loginEncryption ENABLED 
+set ns param -cip ENABLED X-Forwarded-For
 ```
